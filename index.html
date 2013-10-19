@@ -64,16 +64,18 @@
 </div>
  
 <script>
-var canvas = document.getElementById('game');
-var ctx = canvas.getContext('2d');
+(function (){
+	var canvas = document.getElementById('game');
+	var ctx = canvas.getContext('2d');
 
-canvas.width = 480;
-canvas.height = 320;
+	canvas.width = 480;
+	canvas.height = 320;
 
-ctx.fillStyle = 'black';
-ctx.beginPath();
-ctx.arc(100, 150, 50, 0, Math.PI * 2 , true);
-ctx.fill();
+	ctx.fillStyle = 'black';
+	ctx.beginPath();
+	ctx.arc(100, 150, 80, 0, Math.PI * 2 , true);
+	ctx.fill();
+})();
 </script>
 </body>
 </html>
