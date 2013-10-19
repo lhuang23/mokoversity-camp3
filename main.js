@@ -1,4 +1,6 @@
 var gameModule=(function (){
+	var timeoutVar,
+		counter=0;
 	function start(){
 		var canvas = document.getElementById('game'),
 			ctx = canvas.getContext('2d'),
@@ -13,10 +15,21 @@ var gameModule=(function (){
 		ctx.beginPath();
 		ctx.arc(ballX, ballY, ballR, 0, Math.PI * 2 , true);
 		ctx.fill();
+
+		if (counter<10){
+			timeoutVar=setTimeout(start,1000);
+			console.log("CounterA: "+counter);
+			counter++;
+		}
+	}
+	function gameOver(){
+		console.log("CounterB: "+counter);
 	}
 	return {
-		start: start
+		start: start,
+		gameOver: gameOver
 	}
 })();
 
 gameModule.start();
+gameModule.gameOver();
