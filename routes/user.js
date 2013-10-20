@@ -2,11 +2,13 @@
 /*
  * GET users listing.
  */
+var scores = [];  //empey array
 
 exports.list = function(req, res){
   res.send("respond with a resource");
 };
 
 exports.save = function(req, res){
-  console.log("Your scores: " + req.url); // p.43
+	scores.push (req.query.s);
+    console.log("Your scores: " + scores); 
 };
