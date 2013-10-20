@@ -1,6 +1,6 @@
 /*jslint browser: true, devel: true, closure: true */
 
-var gameModule = (function (document) {
+var gameModule = (function (document, $) {
 
     "use strict";
 
@@ -30,8 +30,11 @@ var gameModule = (function (document) {
     }
 
     function gameOver() {
+        var api = "http://127.0.0.1:3000/scores?s=" + scores;
+
         console.log("Final: " + scores);
         document.getElementById("main").removeEventListener("click", touchEvent);
+        $.ajax({url: api});
     }
 
     function startGame() {
@@ -50,7 +53,7 @@ var gameModule = (function (document) {
         ctx.fill();
 
         counter = counter + 1;
-        console.log("counter: " + counter + ", X: " + ballX + ", Y: " + ballY + ", R: " + ballR + ", color: " + ctx.fillStyle);
+        //console.log("counter: " + counter + ", X: " + ballX + ", Y: " + ballY + ", R: " + ballR + ", color: " + ctx.fillStyle);
 
         if (counter < 10) {
             setTimeout(startGame, 1000);
@@ -68,6 +71,6 @@ var gameModule = (function (document) {
     return {
         start: start
     };
-}(document));
+}(document, $));
 
 gameModule.start();
